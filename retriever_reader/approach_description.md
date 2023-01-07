@@ -7,7 +7,7 @@
 
 **Output:** extracted answer
 
-[The structure of IR QA](image_url)
+![The structure of IR QA](https://raw.githubusercontent.com/vifirsanova/empi/main/retriever_reader/IR_QA_structure.png)
 
 ## Challenges:
 * The MRC performance us bounded by the Retriever performance
