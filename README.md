@@ -24,4 +24,11 @@ E-mail: [vifirsanova@gmail.com](mailto:vifirsanova@gmail.com)
   * 5.png
   * 6.png
 * retriever_reader
+  * IR_QA_structure.png
+  * approach_description.md
 * survey
+  * 1.pdf
+  * 2.pdf
+  * 3.pdf
+  * 4.pdf
+  * 5.pdf
