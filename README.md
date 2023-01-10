@@ -16,6 +16,7 @@ E-mail: [vifirsanova@gmail.com](mailto:vifirsanova@gmail.com)
 * fine-tuning
   * data_pre-processing.ipynb
   * model_fine-tuning.ipynb
+  * load_model_to_hub.ipynb
 * layouts
   * 1.png
   * 2.png
