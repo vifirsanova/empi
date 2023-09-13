@@ -1,7 +1,26 @@
-# empi
+# EMPI
 Empathic Machine Processors for Inclusion (EMPI)
 
 E-mail: [vifirsanova@gmail.com](mailto:vifirsanova@gmail.com)
+
+## The ASD QA Dataset
+
+The repo uses [the ASD QA dataset](https://figshare.com/articles/dataset/Autism_Spectrum_Disorder_and_Asperger_Syndrome_Question_Answering_Dataset_1_0/13295831) by Victoria Firsanova.
+
+***The detailed dataset statistics***
+| Parameter                          | Description          |
+| ---------------------------------- | -------------------- |
+| The number of QA pairs             | 4,138                |
+| The number of irrelevant questions | 352                  |
+|The average question length         |53 symbols / 8 words  |
+|The average answer length           |141 symbols / 20 words|
+|The average reading paragraph length|453 symbols / 63 words|
+|Max question length                 |226 symbols / 32 words|
+|Max answer length                   |555 symbols / 85 words|
+|Max reading paragraph length        |551 symbols / 94 words|
+|Min question length                 |9 symbols / 2 words   |
+|Min answer length                   |5 symbols / 1 words   |
+|Min reading paragraph length        |144 symbols / 17 words|
 
 ### Navigation
 
