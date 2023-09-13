@@ -22,6 +22,12 @@ The repo uses [the ASD QA dataset](https://figshare.com/articles/dataset/Autism_
 |Min answer length                   |5 symbols / 1 words   |
 |Min reading paragraph length        |144 symbols / 17 words|
 
+The ASD QA dataset is available on HuggingFace:
+
+1. [Train set](https://huggingface.co/datasets/missvector/asd-qa-train)
+2. [Validation set](https://huggingface.co/datasets/missvector/asd-qa-val)
+3. [Test set](https://huggingface.co/datasets/missvector/asd-qa-test)
+
 ### Navigation
 
 * dataset
