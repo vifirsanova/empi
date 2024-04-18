@@ -39,9 +39,21 @@ The ASD QA dataset is available on HuggingFace:
 2. [Validation set](https://huggingface.co/datasets/missvector/asd-qa-val)
 3. [Test set](https://huggingface.co/datasets/missvector/asd-qa-test)
 
+## The model architecture
+
+![the model architecture](https://github.com/vifirsanova/empi/blob/main/illustrations/model_architecture.png)
+
 ## Building Blocks
 
+The model combines the power of Blockchain with Conversational AI technologies to create [personal user blocks](https://github.com/vifirsanova/empi/blob/main/illustrations/user_data.json) that store user data, app settings and chat logs for interpretability research.
 
+```
+{
+ "username": "Аня",
+ "init_log": "ЭМПИК:\nПривет! Как тебя зовут?\nПриветик! Меня зовут Аня.\nЭМПИК:\nРасскажи мне о себе: что тебе нужно для комфортного общения со мной?    \nНапример, озвучивание текста, крупный шрифт или упрощенный язык.\nАня: Думаю, что мне понадобится распознавание речи.\nЭМПИК:\nОтлично! Я тебя понял. Включаю режим: <распознавание речи>Думаю, что мне понадобится распознавание речи.",
+ "setting": ["распознавание речи", "распознавание речи", {"технология": "text-to-speech", "принцип работы": "технология автоматического воспроизведения текста, например, функция “прямая речь” в iphone", "для кого": ["рас", "афазия", "нарушения процесса порождения речи"]}, ["рас", "афазия", "нарушения процесса порождения речи"]]
+}
+```
 
 ## Previous version navigation (see old_ver branch)
 
