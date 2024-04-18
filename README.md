@@ -12,11 +12,11 @@ EMPI is a set of Conversational AI and mobile development tools for inclusive ed
 
 **EMPI Dataset**
 
-The EMPI Dataset by Victoria Firsanova is a closed graph knowledge base. The EMPI Dataset enables personal data cyphering, and retrieval-augmented generation. [Learn more..](https://github.com/vifirsanova/empi/blob/main/KB/graph.ipynb) [Contribute..](https://colab.research.google.com/github/vifirsanova/empi/blob/main/demos/graph_crowdsoursing_ui.ipynb)
+The EMPI Dataset by Victoria Firsanova is a closed graph knowledge base. The EMPI Dataset enables personal data cyphering, and retrieval-augmented generation. Feel free to [learn more](https://github.com/vifirsanova/empi/blob/main/KB/graph.ipynb) or [contribute.](https://colab.research.google.com/github/vifirsanova/empi/blob/main/demos/graph_crowdsoursing_ui.ipynb)
 
 **The ASD QA Dataset**
 
-The [ASD QA dataset](https://figshare.com/articles/dataset/Autism_Spectrum_Disorder_and_Asperger_Syndrome_Question_Answering_Dataset_1_0/13295831) by Victoria Firsanova is used to train Word Embeddings for the model.
+The [ASD QA dataset](https://figshare.com/articles/dataset/Autism_Spectrum_Disorder_and_Asperger_Syndrome_Question_Answering_Dataset_1_0/13295831) by Victoria Firsanova is used to train [Word Embeddings](https://github.com/vifirsanova/empi/blob/main/notebooks/create_embeddings.ipynb) for the model.
 
 ***The detailed dataset statistics***
 | Parameter                          | Description          |
@@ -38,6 +38,10 @@ The ASD QA dataset is available on HuggingFace:
 1. [Train set](https://huggingface.co/datasets/missvector/asd-qa-train)
 2. [Validation set](https://huggingface.co/datasets/missvector/asd-qa-val)
 3. [Test set](https://huggingface.co/datasets/missvector/asd-qa-test)
+
+## Building Blocks
+
+
 
 ## Previous version navigation (see old_ver branch)
 
