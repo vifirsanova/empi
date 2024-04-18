@@ -39,7 +39,7 @@ The ASD QA dataset is available on HuggingFace:
 2. [Validation set](https://huggingface.co/datasets/missvector/asd-qa-val)
 3. [Test set](https://huggingface.co/datasets/missvector/asd-qa-test)
 
-## Previos version navigation (see old_ver branch)
+## Previous version navigation (see old_ver branch)
 
 * dataset
   * crowdsourcing_task.png: sample of the crowdsourcing task
