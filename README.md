@@ -54,5 +54,3 @@ The model combines the power of Blockchain with Conversational AI technologies t
  "setting": ["распознавание речи", "распознавание речи", {"технология": "text-to-speech", "принцип работы": "технология автоматического воспроизведения текста, например, функция “прямая речь” в iphone", "для кого": ["рас", "афазия", "нарушения процесса порождения речи"]}, ["рас", "афазия", "нарушения процесса порождения речи"]]
 }
 ```
-  * 4.pdf: asking to rate the layouts for the mobile app interface
-  * 5.pdf: asking to describe the desirable virtual assitant
