@@ -1,11 +1,22 @@
 # EMPI
-Empathic Machine Processors for Inclusion (EMPI)
+Empathic Machine Processors for Inclusion (EMPI) is a project that supports the inclusion of people with special needs.
 
-E-mail: [vifirsanova@gmail.com](mailto:vifirsanova@gmail.com)
+EMPI is a set of Conversational AI and mobile development tools for inclusive education, mental well-being and harmonious social interaction. Visit [EMPI web-page](https://vifirsanova.github.io/empi-web/) to learn more, and contact [Victoria Firsanova](mailto:vifirsanova@gmail.com) to contribute.
 
-## The ASD QA Dataset
+## Demos
 
-The repo uses [the ASD QA dataset](https://figshare.com/articles/dataset/Autism_Spectrum_Disorder_and_Asperger_Syndrome_Question_Answering_Dataset_1_0/13295831) by Victoria Firsanova.
+1. [AI-driven Teaching Assitant](https://colab.research.google.com/github/vifirsanova/empi/blob/main/demos/teaching_assistant.ipynb) for inclusive education (uses GPU)
+2. [EMPI AI Chat-bot greetings scenario](https://colab.research.google.com/github/vifirsanova/empi/blob/main/demos/greetings_scenario.ipynb)
+
+## Data
+
+**EMPI Dataset**
+
+The EMPI Dataset by Victoria Firsanova is a closed graph knowledge base. The EMPI Dataset enables personal data cyphering, and retrieval-augmented generation. [Learn more..](https://github.com/vifirsanova/empi/blob/main/KB/graph.ipynb) [Contribute..](https://colab.research.google.com/github/vifirsanova/empi/blob/main/demos/graph_crowdsoursing_ui.ipynb)
+
+**The ASD QA Dataset**
+
+The [ASD QA dataset](https://figshare.com/articles/dataset/Autism_Spectrum_Disorder_and_Asperger_Syndrome_Question_Answering_Dataset_1_0/13295831) by Victoria Firsanova is used to train Word Embeddings for the model.
 
 ***The detailed dataset statistics***
 | Parameter                          | Description          |
@@ -28,7 +39,7 @@ The ASD QA dataset is available on HuggingFace:
 2. [Validation set](https://huggingface.co/datasets/missvector/asd-qa-val)
 3. [Test set](https://huggingface.co/datasets/missvector/asd-qa-test)
 
-### Navigation
+## Previos version navigation (see old_ver branch)
 
 * dataset
   * crowdsourcing_task.png: sample of the crowdsourcing task
