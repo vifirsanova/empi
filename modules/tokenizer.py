@@ -10,9 +10,11 @@ class Tokenizer():
     pass
 
   def normalize(self, text):
+    import unicodedata
     return unicodedata.normalize('NFC', text)
 
   def clean(self, text, pattern):
+    import re
     return re.sub(pattern, '', text)
 
   def to_lower(self, text):
@@ -25,11 +27,15 @@ class Tokenizer():
 
     # пословная
     elif setting == 'word':
-      return nltk.word_tokenize(text)
+      import re
+      text = re.sub(r'([.,!?;:"])(?=\S)', r'\1 ', text)
+      return re.findall(r'\b\w+\b', text)
 
     # n-граммная
     elif isinstance(setting, int):
-      temp = nltk.word_tokenize(text)
+      import re
+      text = re.sub(r'([.,!?;:"])(?=\S)', r'\1 ', text)
+      temp = re.findall(r'\b\w+\b', text)
       ngrams = []
       for i in range(len(temp) - setting+1):
         ngrams.append(' '.join(temp[i:i + setting]))
@@ -37,5 +43,6 @@ class Tokenizer():
 
     # подсловная
     else:
+      from transformers import AutoTokenizer
       tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
       return tokenizer.tokenize(text)
