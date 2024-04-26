@@ -21,24 +21,23 @@ class Tokenizer():
     return text.lower()
 
   def segmentation(self, text, setting):
+    import re 
+    text = re.sub('([.,!?()])', r' \1 ', text)
+    text = re.sub('\s{2,}', ' ', text)
+
     # посимвольная
     if setting == 'symbol':
       return [*text]
 
     # пословная
-    elif setting == 'word':
-      import re
-      text = re.sub(r'([.,!?;:"])(?=\S)', r'\1 ', text)
-      return re.findall(r'\b\w+\b', text)
+    elif setting == 'word':    
+      return text.split()
 
     # n-граммная
     elif isinstance(setting, int):
-      import re
-      text = re.sub(r'([.,!?;:"])(?=\S)', r'\1 ', text)
-      temp = re.findall(r'\b\w+\b', text)
       ngrams = []
-      for i in range(len(temp) - setting+1):
-        ngrams.append(' '.join(temp[i:i + setting]))
+      for i in range(len(text.split() - setting+1):
+        ngrams.append(' '.join(text.split([i:i + setting]))
       return ngrams
 
     # подсловная
