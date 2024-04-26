@@ -36,8 +36,9 @@ class Tokenizer():
     # n-граммная
     elif isinstance(setting, int):
       ngrams = []
-      for i in range(len(text.split() - setting+1)):
-        ngrams.append(' '.join(text.split([i:i + setting]))
+      text = text.split()
+      for i in range(len(text - setting+1)):
+        ngrams.append(' '.join(text[i:i + setting]))
       return ngrams
 
     # подсловная
