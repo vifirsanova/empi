@@ -1,10 +1,10 @@
 class Tokenizer():
   """
-  Токенизатор:
-  - нормализация кодировок по методу NFC (True, False)
-  - чистка по заданному паттерну с помощью RegEx (паттерн вида r'...')
-  - приведение к нижнему регистру (True, False)
-  - посимвольная, пословная сегментация, n-граммная сегментация или BPE (опции: symbol (str), word (str), n (int), subword (str))
+  Класс "Токенизатор":
+  normalize(text) - нормализация кодировок по методу NFC, text (str)
+  clean(text, pattern) - чистка по заданному паттерну с помощью RegEx, text(str), pattern (паттерн вида r'...')
+  to_lower(text) - приведение к нижнему регистру, text (str)
+  segmentation(text, setting) - сегментация, text (str), setting ("symbol" для посимвольной, "word" для пословной, n (int) для n-граммной, "subword" для подсловной)
   """
   def __init__(self):
     pass
