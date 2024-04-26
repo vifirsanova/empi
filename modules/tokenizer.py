@@ -10,18 +10,15 @@ class Tokenizer():
     pass
 
   def normalize(self, text):
-    import unicodedata
     return unicodedata.normalize('NFC', text)
 
   def clean(self, text, pattern):
-    import re
     return re.sub(pattern, '', text)
 
   def to_lower(self, text):
     return text.lower()
 
   def segmentation(self, text, setting):
-    import re 
     text = re.sub('([.,!?()])', r' \1 ', text)
     text = re.sub('\s{2,}', ' ', text)
 
@@ -30,7 +27,7 @@ class Tokenizer():
       return [*text]
 
     # пословная
-    elif setting == 'word':    
+    elif setting == 'word':
       return text.split()
 
     # n-граммная
@@ -43,6 +40,5 @@ class Tokenizer():
 
     # подсловная
     else:
-      from transformers import AutoTokenizer
       tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
       return tokenizer.tokenize(text)
