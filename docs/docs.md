@@ -1,7 +1,3 @@
-Creating documentation for an NLP library involves providing comprehensive information on installation, usage, functionality, and examples. Here's a template you can follow:
-
----
-
 ### [NLP Library Name] Documentation
 
 #### Overview
@@ -101,5 +97,3 @@ Specify the license under which the library is distributed and provide any addit
 - Link to the library's GitHub repository or website
 - Links to tutorials, blog posts, or other supplementary materials
 - Contact information for support or inquiries
-
----
