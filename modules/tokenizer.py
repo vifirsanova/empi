@@ -37,7 +37,7 @@ class Tokenizer():
     elif isinstance(setting, int):
       ngrams = []
       text = text.split()
-      for i in range(len(text - setting+1)):
+      for i in range(len(text) - setting+1):
         ngrams.append(' '.join(text[i:i + setting]))
       return ngrams
 
