@@ -3,6 +3,19 @@ Empathic Machine Processors for Inclusion (EMPI) is a project that supports the 
 
 EMPI is a set of Conversational AI and mobile development tools for inclusive education, mental well-being and harmonious social interaction. Visit [EMPI web-page](https://vifirsanova.github.io/empi-web/) to learn more, and contact [Victoria Firsanova](mailto:vifirsanova@gmail.com) to contribute.
 
+## Set-Up
+
+```
+!git clone https://github.com/vifirsanova/empi.git
+
+import sys
+import os
+
+sys.path.append(os.path.abspath('/content/empi/modules/'))
+```
+
+You can import all the necessary modules from EMPI modules or use custom compatible modules.
+
 ## Demos
 
 1. [AI-driven Teaching Assitant](https://colab.research.google.com/github/vifirsanova/empi/blob/main/demos/teaching_assistant.ipynb) for inclusive education (uses GPU)
