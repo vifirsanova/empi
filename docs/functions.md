@@ -42,3 +42,27 @@
                 setting (Union[str, int]): The segmentation setting. Refer to segmentation method for details.
             Returns:
                 List[str]: The list of tokens.
+
+# Search
+
+    This class facilitates two scenarios:
+    1. Data Encryption: Searching for data vulnerable to hackers using a knowledge graph.
+       - Searches for indications of user's personal data in the knowledge base and encrypts them.
+       - Returns the original text with encrypted data.
+    2. Information Extraction for Generating Informative Responses:
+       - Searches the graph for relevant information and extracts text.
+       - The extracted text can be used for conditioned generation using LLM.
+
+    Attributes:
+        path (set): A set to store the path of matched nodes during the graph search.
+
+    Methods:
+        graph_search(data: dict, query: str) -> set:
+            Recursively search for matches (query) in the graph (data).
+            This function traverses three dimensions of the graph:
+            - Searches for exact matches or presence of the search query within the sequence.
+            Args:
+                data (dict): The graph data to be searched.
+                query (str): The search query.
+            Returns:
+                set: A set containing the path of matched nodes.
