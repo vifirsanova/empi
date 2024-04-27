@@ -85,11 +85,11 @@ class Tokenizer:
         else:
             tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
             return tokenizer.tokenize(text)
-
-  def tokenize(self, text, patttern=None, setting):
-    text = self.normalize(text)
-    if pattern is not None:
-      text = self.clean(text, pattern)
-    text = self.to_lower(text)
-    tokens = self.segmentation(text, setting)
-    return tokens
+          
+    def tokenize(self, text, patttern=None, setting):
+      text = self.normalize(text)
+      if pattern is not None:
+        text = self.clean(text, pattern)
+      text = self.to_lower(text)
+      tokens = self.segmentation(text, setting)
+      return tokens
