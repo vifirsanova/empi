@@ -1,54 +1,76 @@
 # Tokenizer
 
-Tokenizer class for pre-processing.
+Tokenizer class for pre-processing. The class provides methods for text normalizing text, cleaning text using regular expressions, converting text to lowercase, segmenting text based on different settings, and tokenizing text.
 
-The class provides methods for text normalizing text, cleaning text using regular expressions, converting text to lowercase, segmenting text based on different settings, and tokenizing text.
+## Methods
 
-## Methods:
+### normalize(text: str) -> str
 
-normalize(text: str) -> str:
 Normalize the input text using the NFC (Normalization Form C) method.
-Args:
-    text (str): The input text to be normalized.
-Returns:
-    str: The normalized text.
 
-clean(text: str, pattern: str) -> str:
+Args:
+
+- text (str): The input text to be normalized.
+
+Returns:
+
+- str: The normalized text.
+        
+### clean(text: str, pattern: str) -> str
+
 Clean the input text using a specified regular expression pattern.
-Args:
-    text (str): The input text to be cleaned.
-    pattern (str): The regular expression pattern for cleaning.
-Returns:
-    str: The cleaned text.
 
-to_lower(text: str) -> str:
+Args:
+
+- text (str): The input text to be cleaned.
+- pattern (str): The regular expression pattern for cleaning.
+
+Returns:
+
+- str: The cleaned text.
+
+### to_lower(text: str) -> str
+
 Convert the input text to lowercase.
-Args:
-    text (str): The input text to be converted to lowercase.
-Returns:
-    str: The text converted to lowercase.
 
-segmentation(text: str, setting: Union[str, int]) -> List[str]:
+Args:
+
+- text (str): The input text to be converted to lowercase.
+
+Returns:
+
+- str: The text converted to lowercase.
+
+### segmentation(text: str, setting: Union[str, int]) -> List[str]
+
 Segment the input text based on the specified setting.
-Args:
-    text (str): The input text to be segmented.
-    setting (Union[str, int]): The segmentation setting. Possible values are:
-        - 'symbol': Segment the text into individual characters.
-        - 'word': Segment the text into words.
-        - n (int): Segment the text into n-grams, where n is an integer.
-        - 'subword': Segment the text into subwords using a pretrained tokenizer.
-Returns:
-    List[str]: The segmented text as a list of strings.
 
-tokenize(text: str, setting: Union[str, int], cleaning_pattern: str = None, lower: Bool = True) -> List[str]:
-Tokenize the input text.
 Args:
-    text (str): The input text to be tokenized.
-    cleaning_pattern (str, optional): The regular expression pattern for cleaning. Default is None.
-    setting (Union[str, int]): The segmentation setting. Refer to segmentation method for details.
-    lower (Bool): Enables (True) or disables (False) converting to lowercase; default is True 
+
+- text (str): The input text to be segmented.
+- setting (Union[str, int]): The segmentation setting. Available settings:
+    - setting='symbol' enables charater-based segmentation;
+    - setting='word' enables word-based segmentation;
+    - setting=n (int) enables n-gram segmentation;
+    - setting='subword' enables byte-pair encoding (BPE) subword segmentation
+  
 Returns:
-    List[str]: The list of tokens.
+- List[str]: The segmented text as a list of strings.
+
+### tokenize(text: str, setting: Union[str, int], pattern: str = None, lower: Bool = True) -> List[str]
+
+Tokenize the input text.
+
+Args:
+
+- text (str): The input text to be tokenized.
+- pattern (str, optional): The regular expression pattern for cleaning. Default is None.
+- setting (Union[str, int]): The segmentation setting. Refer to segmentation method for details.
+- lower (Bool): Enables (True) or disables (False) converting to lowercase. Default is True.
+
+Returns:
+
+- List[str]: The list of tokens.
 
 # Search
 
