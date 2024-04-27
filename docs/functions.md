@@ -72,6 +72,38 @@ Returns:
 
 - List[str]: The list of tokens.
 
+## Example
+
+```
+Tokenizer().tokenize('This is a sample test for bigram tokenization without cleaning.', setting=2)
+
+['this is',
+ 'is a',
+ 'a sample',
+ 'sample test',
+ 'test for',
+ 'for bigram',
+ 'bigram tokenization',
+ 'tokenization without',
+ 'without cleaning',
+ 'cleaning .']
+
+Tokenizer().tokenize('This # is a sample $%^ test for word based tokenization with cleaning.',
+                      pattern=r'[^\w\s]', setting='word')
+
+['this',
+ 'is',
+ 'a',
+ 'sample',
+ 'test',
+ 'for',
+ 'word',
+ 'based',
+ 'tokenization',
+ 'with',
+ 'cleaning']
+```
+
 # Search
 
     This class facilitates two scenarios:
