@@ -6,8 +6,8 @@ EMPI is a set of AI-driven tools for inclusive education web and mobile developm
 ## Contents
 #### 1. Installation
 #### 2. Quick Start
-#### 3. Usage
-#### 4. Functions
-#### 5. Examples
-#### 6. Contributing
+#### 3. [Usage](https://github.com/vifirsanova/empi/blob/main/modules/demos.ipynb)
+#### 4. [Functions](https://github.com/vifirsanova/empi/tree/main/modules)
+#### 5. [Examples](https://github.com/vifirsanova/empi/tree/main/demos)
+#### 6. [Contributing](https://empi-crowdsourcing.static.domains/)
 #### 7. [License](https://raw.githubusercontent.com/vifirsanova/empi-web/main/licence.pdf)
