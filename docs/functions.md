@@ -106,24 +106,46 @@ Tokenizer().tokenize('This # is a sample $%^ test for word based tokenization wi
 
 # Search
 
-    This class facilitates two scenarios:
-    1. Data Encryption: Searching for data vulnerable to hackers using a knowledge graph.
-       - Searches for indications of user's personal data in the knowledge base and encrypts them.
-       - Returns the original text with encrypted data.
-    2. Information Extraction for Generating Informative Responses:
-       - Searches the graph for relevant information and extracts text.
-       - The extracted text can be used for conditioned generation using LLM.
+Search class for graph-based search.
 
-    Attributes:
-        path (set): A set to store the path of matched nodes during the graph search.
+This class facilitates two scenarios:
 
-    Methods:
-        graph_search(data: dict, query: str) -> set:
-            Recursively search for matches (query) in the graph (data).
-            This function traverses three dimensions of the graph:
-            - Searches for exact matches or presence of the search query within the sequence.
-            Args:
-                data (dict): The graph data to be searched.
-                query (str): The search query.
-            Returns:
-                set: A set containing the path of matched nodes.
+1. Data Encryption:
+
+- Search for personal data indications in the knowledge base to encrypt them
+- Return the original text with encrypted data
+
+2. Information Extraction for RAG:
+
+- Search the graph for relevant information and extract it
+- Use the extracted data to condition LLM
+
+## Methods
+
+### graph_search(data: dict, query: str) -> set
+
+Recursively search for matches (query) in the graph (data). The function traverses three dimensions of the graph: searches for exact matches or presence of the search query within the sequence.
+        
+Args:
+
+- data (dict): The graph data to be searched.
+- query (str): The search query.
+
+Returns:
+
+- set: The path of matched nodes.
+
+## Example
+
+```
+for test_query in ['номер телефона', 'iphone']:
+  print(f'Search results for <{test_query}>')
+  print(Search().graph_search(data, test_query))
+
+Search results for <номер телефона>
+{'зашифровано'}
+
+Search results for <iphone>
+{'технология автоматического воспроизведения текста, например, функция “прямая речь” в iphone'}
+```
+                
