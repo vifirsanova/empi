@@ -67,3 +67,18 @@ The model combines the power of Blockchain with Conversational AI technologies t
  "setting": ["распознавание речи", "распознавание речи", {"технология": "text-to-speech", "принцип работы": "технология автоматического воспроизведения текста, например, функция “прямая речь” в iphone", "для кого": ["рас", "афазия", "нарушения процесса порождения речи"]}, ["рас", "афазия", "нарушения процесса порождения речи"]]
 }
 ```
+
+TODO
+```
+This class facilitates two scenarios:
+
+    Data Encryption:
+
+    Search for personal data indications in the knowledge base to encrypt them
+    Return the original text with encrypted data
+
+    Information Extraction for RAG:
+
+    Search the graph for relevant information and extract it
+    Use the extracted data to condition LLM
+```
