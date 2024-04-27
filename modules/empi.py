@@ -91,21 +91,21 @@ class Tokenizer:
             tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
             return tokenizer.tokenize(text)
           
-    def tokenize(self, text, setting, cleaning_pattern=None, lower=True):
+    def tokenize(self, text, setting, pattern=None, lower=True):
       """
       Tokenize the input text.
 
       Args:
-        text (str): input text to be tokenized
-        setting (str or int): segmentation setting; refer to segmentation method for details
-        cleaning_pattern (str, optional): regular expression pattern for cleaning; default is None
-        lower (Bool): enables (True) or disables (False) converting to lowercase; default is True 
+        text (str): The input text to be tokenized.
+        pattern (str, optional): The regular expression pattern for cleaning. Default is None.
+        setting (Union[str, int]): The segmentation setting. Refer to segmentation method for details.
+        lower (Bool): Enables (True) or disables (False) converting to lowercase. Default is True.
       
       Returns: list of tokens.
       """
       text = self.normalize(text)
-      if cleaning_pattern is not None:
-        text = self.clean(text, cleaning_pattern)
+      if pattern is not None:
+        text = self.clean(text, pattern)
       if lower == True:
         text = self.to_lower(text)
       tokens = self.segmentation(text, setting)
