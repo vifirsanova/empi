@@ -2,106 +2,88 @@
 
 Tokenizer class for pre-processing. The class provides methods for text normalizing text, cleaning text using regular expressions, converting text to lowercase, segmenting text based on different settings, and tokenizing text.
 
+## Initialization
+
+```python
+Tokenizer(normalization_type='NFC', pattern=None, lower=True, segmentation_type='subword')
+```
+
+**Parameters**
+
+- `normalization_type` (str): The normalization form compatible with unicodedata.normalize().
+
+    - Example: `normalization_type='NFC'` normalizes the input text using the Normalization Form C method.
+
+- `pattern` (str): The regular expression pattern for cleaning.
+
+    - Example: `pattern='[^\w\s]'` cleans anything that's not a digit, letter, or whitespace.
+
+- `lower` (bool): Convert the input text to lowercase.
+
+    - Options: `lower=True` converts the input text to lowercase; `lower=False` does not change the input text.
+
+- `segmentation_type` (Union[str, int]): The segmentation setting.
+
+    - Options:
+        - `segmentation_type='char'` enables character-based segmentation.
+        - `segmentation_type='word'` enables word-based segmentation.
+        - `segmentation_type=n` (int) enables n-gram segmentation.
+        - `segmentation_type='subword'` enables byte-pair encoding (BPE) subword segmentation.
 ## Methods
 
-### normalize(text: str) -> str
+**`normalize(text: str)`** -> str
 
-Normalize the input text using the NFC (Normalization Form C) method.
+Normalizes the input text using the method specified in `self.normalization_type`.
 
-Args:
-
-- text (str): The input text to be normalized.
-
-Returns:
-
-- str: The normalized text.
-        
-### clean(text: str, pattern: str) -> str
-
-Clean the input text using a specified regular expression pattern.
-
-Args:
-
-- text (str): The input text to be cleaned.
-- pattern (str): The regular expression pattern for cleaning.
-
-Returns:
-
-- str: The cleaned text.
-
-### to_lower(text: str) -> str
-
-Convert the input text to lowercase.
-
-Args:
-
-- text (str): The input text to be converted to lowercase.
-
-Returns:
-
-- str: The text converted to lowercase.
-
-### segmentation(text: str, setting: Union[str, int]) -> List[str]
-
-Segment the input text based on the specified setting.
-
-Args:
-
-- text (str): The input text to be segmented.
-- setting (Union[str, int]): The segmentation setting. Available settings:
-    - setting='symbol' enables charater-based segmentation;
-    - setting='word' enables word-based segmentation;
-    - setting=n (int) enables n-gram segmentation;
-    - setting='subword' enables byte-pair encoding (BPE) subword segmentation
+- Parameters:
+    - `text (str)`: The input text to be normalized.
+    - Returns: The normalized text.
+ 
   
-Returns:
-- List[str]: The segmented text as a list of strings.
+**`clean(text: str)`** -> str
 
-### tokenize(text: str, setting: Union[str, int], pattern: str = None, lower: Bool = True) -> List[str]
+Cleans the input text using a regular expression pattern specified in `self.pattern`.
 
-Tokenize the input text.
+- Parameters:
+    - `text (str)`: The input text to be cleaned.
+    - Returns: The cleaned text.
+        
+**`to_lower(text: str)` -> str
 
-Args:
+Converts the input text to lowercase if `self.lower` is `True`.
 
-- text (str): The input text to be tokenized.
-- pattern (str, optional): The regular expression pattern for cleaning. Default is None.
-- setting (Union[str, int]): The segmentation setting. Refer to segmentation method for details.
-- lower (Bool): Enables (True) or disables (False) converting to lowercase. Default is True.
+- Parameters:
+    - `text (str)`: The input text to be converted to lowercas.
+    - Returns: The lowecase text.
 
-Returns:
+**`segmentation(text: str)` -> List[str]
 
-- List[str]: The list of tokens.
+Segments the input text based on the setting specified in `self.segmentation_type`.
+
+- Parameters:
+    - `text (str)`: The input text to be segmented.
+    - Returns: A list of segments based on the segmentation setting.
+
+**`tokenize(text: str)` -> List[str]
+
+Tokenizes the input text.
+
+- Parameters:
+    - `text (str)`: The input text to be tokenized.
+    - Returns: A list of tokens.
 
 ## Example
 
+```python
+tokenizer = Tokenizer(normalization_type='NFC', pattern='[^\w\s]', lower=True, segmentation_type='word')
+text = "Что означает аббревиатура РАС?"
+tokens = tokenizer.tokenize(text)
+print(tokens)
 ```
-Tokenizer().tokenize('This is a sample test for bigram tokenization without cleaning.', setting=2)
+This example initializes a **`Tokenizer`** instance with specified parameters, tokenizes the input text, and prints the resulting tokens.
 
-['this is',
- 'is a',
- 'a sample',
- 'sample test',
- 'test for',
- 'for bigram',
- 'bigram tokenization',
- 'tokenization without',
- 'without cleaning',
- 'cleaning .']
-
-Tokenizer().tokenize('This # is a sample $%^ test for word based tokenization with cleaning.',
-                      pattern=r'[^\w\s]', setting='word')
-
-['this',
- 'is',
- 'a',
- 'sample',
- 'test',
- 'for',
- 'word',
- 'based',
- 'tokenization',
- 'with',
- 'cleaning']
+```
+['Что', 'означает', 'аббревиатура', 'РАС', '?']
 ```
 
 # Search
