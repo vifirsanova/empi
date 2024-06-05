@@ -80,11 +80,12 @@ Tokenizes the input text.
 ## Example
 
 ```python
-tokenizer = Tokenizer(normalization_type='NFC', pattern='[^\w\s]', lower=True, segmentation_type='word')
+tokenizer = Tokenizer(segmentation_type='word', lower=False)
 text = "Что означает аббревиатура РАС?"
 tokens = tokenizer.tokenize(text)
 print(tokens)
 ```
+
 This example initializes a **`Tokenizer`** instance with specified parameters, tokenizes the input text, and prints the resulting tokens.
 
 ```
