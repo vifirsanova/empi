@@ -1,3 +1,8 @@
+Contents:
+
+- [Tokenizer](https://github.com/vifirsanova/empi/blob/main/docs/functions.md#tokenizer)
+- Search
+  
 # Tokenizer
 
 Tokenizer class for pre-processing. The class provides methods for text normalizing text, cleaning text using regular expressions, converting text to lowercase, segmenting text based on different settings, and tokenizing text.
