@@ -44,73 +44,94 @@ class Tokenizer:
     The class provides methods for text normalizing text, cleaning text using regular expressions,
     converting text to lowercase, segmenting text based on different settings, and tokenizing text.
     """
+    def __init__(self, normalization_type='NFC', pattern=None, lower=True, segmentation_type='subword'):
+        """
+        Args:  
+            normalization_type(str): The normalization form compatible to unicodedata.normalize().
+            Example:
+                normalization_type='NFC' normalizes the input text using the Normalization Form C method.
+
+            pattern (str): The regular expression pattern for cleaning. 
+            Example:
+                pattern='[^\w\s]' cleans anything that's not a digit, letter or whitespace
+
+            lower(Bool): Convert the input text to lowercase.
+            Options:
+                lower=True converts the input text to lowercase;
+                lower=False does not change the input text.
+
+            setting (Union[str, int]): The segmentation setting. 
+            Options:
+                setting='char' (str) enables charater-based segmentation;
+                setting='word' (str) enables word-based segmentation;
+                setting=n (int) enables n-gram segmentation;
+                setting='subword' (str) enables byte-pair encoding (BPE) subword segmentation.
+        """
+        self.normalization_type = normalization_type
+        self.pattern = pattern
+        self.lower = lower
+        self.setting = segmentation_type
+        
     def normalize(self, text):
         """
-        Normalize the input text using the NFC (Normalization Form C) method.
+        The input text normalization with the method specified in self.normalization_type.
         """
-        return unicodedata.normalize('NFC', text)
+        return unicodedata.normalize(self.normalization_type, text)
 
-    def clean(self, text, pattern):
+    def clean(self, text):
         """
-        Clean the input text using a specified regular expression pattern.
+        Cleans the input text using a regular expression pattern specified in self.pattern.
         """
-        return re.sub(pattern, '', text)
+        return re.sub(self.pattern, '', text)
 
     def to_lower(self, text):
         """
-        Convert the input text to lowercase.
+        Converts the input text to lowercase  if self.lower is True.
         """
         return text.lower()
 
-    def segmentation(self, text, setting):
+    def segmentation(self, text):
         """
-        Segment the input text based on the specified setting.
-        Available settings:
-          setting='symbol' enables charater-based segmentation;
-          setting='word' enables word-based segmentation;
-          setting=n (int) enables n-gram segmentation;
-          setting='subword' enables byte-pair encoding (BPE) subword segmentation
+        Segments the input text based on the setting specified in self.segmentation_type.
         """
+        # Adds a whitespace before punctuation for fine-grained segmentation 
         text = re.sub('([.,!?()])', r' \1 ', text)
         text = re.sub('\s{2,}', ' ', text)
 
-        # charater-based segmentation
-        if setting == 'symbol':
+        # Charater-based segmentation
+        if self.setting == 'char':
             return list(text)
 
-        # word-based segmentation
-        elif setting == 'word':
+        # Word-based segmentation
+        elif self.setting == 'word':
             return text.split()
 
-        # n-gram segmentation
-        elif isinstance(setting, int):
+        # N-gram segmentation
+        elif isinstance(self.setting, int):
             ngrams = []
             text = text.split()
-            for i in range(len(text) - setting + 1):
-                ngrams.append(' '.join(text[i:i + setting]))
+            for i in range(len(text) - self.setting + 1):
+                ngrams.append(' '.join(text[i:i + self.setting]))
             return ngrams
 
-        # byte-pair encoding (BPE) subword segmentation
+        # Byte-pair encoding (BPE) subword segmentation using HuggingFace Transformers
         else:
             tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
             return tokenizer.tokenize(text)
           
-    def tokenize(self, text, setting, pattern=None, lower=True):
+    def tokenize(self, text):
       """
       Tokenize the input text.
 
       Args:
         text (str): The input text to be tokenized.
-        pattern (str, optional): The regular expression pattern for cleaning. Default is None.
-        setting (Union[str, int]): The segmentation setting. Refer to segmentation method for details.
-        lower (Bool): Enables (True) or disables (False) converting to lowercase. Default is True.
       
       Returns: list of tokens.
       """
       text = self.normalize(text)
-      if pattern is not None:
-        text = self.clean(text, pattern)
-      if lower == True:
+      if self.pattern is not None:
+        text = self.clean(text)
+      if self.lower == True:
         text = self.to_lower(text)
-      tokens = self.segmentation(text, setting)
+      tokens = self.segmentation(text)
       return tokens
