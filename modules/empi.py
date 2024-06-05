@@ -1,4 +1,3 @@
-from transformers import AutoTokenizer
 import re
 import unicodedata
 
@@ -71,6 +70,7 @@ class Tokenizer:
         self.pattern = pattern
         self.lower = lower
         self.setting = segmentation_type
+        self.subwords = {'презид', 'США', 'ко', 'х', 'ь', 'ы,</w>', 'ства</w>', 'по', 'a', 'про', 'из', 'ств', 'И', 'Бара', 'A', 'S', 'З', 'ать</w>', 'G', 'ент', 'го</w>', 'ка', 'х</w>', 'с', 'не', 'у', 'Б', 'r', '(', 'ий</w>', '5', 'М', 'o', 'су', 'р', 'ност', 'g', 'энерг', 'энергет', '2', 'се', 'ав', 'з', 'пер', 'e', 'Т', 'американ', ',', 'н', 'V', 'я', 'ам', 'м', 'м</w>', 'со', ':', 'n', 'ин', 'президента</w>', '1', 'ие</w>', 'IT-', 'ор', 'т', 'А', 'ш', 'кото', 'ения</w>', 'm', '0', '%', 'ре', 'бы', 'во', 'ро', 'о', 'ю</w>', 'Обама</w>', 't', 'й</w>', 'а</w>', 'вы', 'R', 'д', 'h', 'к</w>', 'с</w>', 'пол', '«', 'их</w>', 'F', 'W', 'по</w>', 'p', 'пре', 'те', 'пр', 'P', 'то', 'I', '»</w>', 'ны', 'П', 'ци', 'п', 'c', 'нол', '</w>', 'l', ')', 'ел', 'ис', ',</w>', 'пред', 'США</w>', 'до', 'ог', 'ал', 'ер', 'Ч', 'К', 'ц', 'ь</w>', 'M', 'ара', 'я</w>', 'итель', 'к', 'ы</w>', 'ерикан', 'ф', 'Ш', 's', 'Г', 'го', '8', 'и', 'v', 'за', 'президент', 'в</w>', 'иче', 'ы', 'об', '-', 'ит', 'на</w>', 'ый</w>', 'ск', 'd', 'i', 'f', 'ч', 'ж', 'но', 'Обам', '—</w>', 'ных</w>', 'л', 'ст', 'энер', 'ич', 'й', 'г', 'ции</w>', 'В', 'ет', 'ил', 'од', 'ик', 'u', 'ть', 'е', 'ат', 'прав', 'ван', 'Э', 'то</w>', 'Y', 'щ', 'сл', 'э', 'k', 'ист', 'y', 'в', 'H', 'у</w>', 'O', 'е</w>', 'и</w>', 'пере', 'уж', 'T', 'С', 'w', 'от', 'b', 'Д', 'C', 'ть</w>', 'E', 'ид', 'б', 'ра', 'Н', 'ель', 'ия</w>', 'ю', 'ет</w>', 'а', 'сам', 'технолог', 'ен', 'на', 'ной</w>', 'пост', 'ан'}
         
     def normalize(self, text):
         """
@@ -114,11 +114,22 @@ class Tokenizer:
                 ngrams.append(' '.join(text[i:i + self.setting]))
             return ngrams
 
-        # Byte-pair encoding (BPE) subword segmentation using HuggingFace Transformers
+        # Byte-pair encoding (BPE) subword segmentation using pre-trained subwords stored in self.subwords
         else:
-            tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-uncased")
-            return tokenizer.tokenize(text)
-          
+          tokens = []
+          while text:
+              match = False
+              for subword in sorted(self.subwords, key=len, reverse=True):
+                  if text.startswith(subword):
+                      tokens.append(subword)
+                      text = text[len(subword):]
+                      match = True
+                      break
+              if not match:
+                  tokens.append(text[0])
+                  text = text[1:]
+          return tokens
+
     def tokenize(self, text):
       """
       Tokenize the input text.
