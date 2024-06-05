@@ -48,7 +48,7 @@ Cleans the input text using a regular expression pattern specified in `self.patt
     - `text (str)`: The input text to be cleaned.
     - Returns: The cleaned text.
         
-**`to_lower(text: str)` -> str
+**`to_lower(text: str)`** -> str
 
 Converts the input text to lowercase if `self.lower` is `True`.
 
@@ -56,7 +56,7 @@ Converts the input text to lowercase if `self.lower` is `True`.
     - `text (str)`: The input text to be converted to lowercas.
     - Returns: The lowecase text.
 
-**`segmentation(text: str)` -> List[str]
+**`segmentation(text: str)`** -> List[str]
 
 Segments the input text based on the setting specified in `self.segmentation_type`.
 
@@ -64,7 +64,7 @@ Segments the input text based on the setting specified in `self.segmentation_typ
     - `text (str)`: The input text to be segmented.
     - Returns: A list of segments based on the segmentation setting.
 
-**`tokenize(text: str)` -> List[str]
+**`tokenize(text: str)`** -> List[str]
 
 Tokenizes the input text.
 
