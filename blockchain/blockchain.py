@@ -4,6 +4,18 @@ import uuid # creates unique IDs
 from pprint import pprint
 import json
 import re
+import xmltodict
+from llama_cpp import Llama
+
+# load LLM
+llm = Llama(
+      model_path="/home/missvector/Meta-Llama-3-8B-Instruct.Q4_K_M.gguf",
+      n_ctx=2048, # context window
+)
+
+# load knowledge base
+with open('tbl.ttl') as f:
+    KB = xmltodict.parse(f.read())
 
 class Block:
     def __init__(self, data, blockId="", previousBlockHash=""):
@@ -55,6 +67,11 @@ class Blockchain:
         # calculate block ID
         block.blockId = self.top_block().blockId + 1
 
+        # update log
+        if block.data != "Root" and self.top_block().data != "Root":
+            print(block.data['log'])
+            block.data['log'] += self.top_block().data['log']
+
         # TODO: if validate() == True:
         self.chain.append(block)
 
@@ -67,13 +84,13 @@ class Blockchain:
 
     def validate(self):
         """
-        TODO guardrail checks
+        TODO guardrail checks: injections and hallucinations
         :return:
         """
         pass
 
 class Data():
-    def __init__(self, userCard, log, currentPromptTokens, generatedResult, extractedInfo, guardrail):
+    def __init__(self, userCard, currentPromptTokens, guardrail):
         """
         :userCard: user data
         :log: machine-human interaction history
@@ -83,21 +100,42 @@ class Data():
         :guardrail: relevant guardrail in XML
         """
         self.userCard = userCard
-        self.log = log
-        self.currentPromptTokens = currentPromptTokens
-        self.generatedResult = generatedResult
-        self.extractedInfo = extractedInfo
         self.guardrail = guardrail
+        self.currentPromptTokens = currentPromptTokens
+        self.extractedInfo = self.retrieval()
+        self.generatedResult = self.generate()
         self.data = dict()
 
     def build(self):
         self.data['userCard'] = self.userCard
-        self.data['log'] = self.log
+        self.data['log'] = self.log()
         self.data['currentPromptTokens'] = self.currentPromptTokens
         self.data['generatedResult'] = self.generatedResult
         self.data['extractedInfo'] = self.extractedInfo
         self.data['guardrail'] = self.guardrail
         return self.data
+
+    def retrieval(self):
+        # word-level tokenization
+        tokens = re.sub(r'\W', ' ', self.currentPromptTokens.lower())
+        tokens = tokens.split()
+        # exact match
+        for token in tokens:
+            if token in str(KB) and len(token) > 5:
+                return re.findall(r"http.*?"+token+".*?#", str(KB))[0]
+
+    def generate(self):
+        output = llm(
+            f"Q: {self.currentPromptTokens} A: ",  # Prompt
+            max_tokens=64,  # Generate up to 64 tokens, set to None to generate up to the end of the context window
+            stop=["Q:", "\n"],  # Stop generating just before the model would generate a new question
+            #echo=True  # Echo the prompt back in the output
+        )  # Generate a completion, can also call create_completion
+
+        return output
+
+    def log(self):
+        return f"USER:': {self.currentPromptTokens}, 'SYSTEM:': {self.generatedResult['choices'][0]['text']}"
 
 class userCard():
     def __init__(self, age, interests, accessibilityTools, toneOfVoice):
@@ -164,38 +202,46 @@ class toneOfVoice():
         self.positivity = positivity
         self.humor = humor
 
-# 1. create the chain
+# create the chain
 blockchain = Blockchain()
 
-# 2. import userCard values from json
+# import userCard values from json
 with open('data.json') as f:
     user_data = json.load(f)
-
+# get age info
 age = user_data['age']
-
+# parse interests string
 interests = user_data['interests'].lower()
 interests = re.sub(r'\W', ' ', interests)
 interests = interests.split()
-
-accessibilityTools = accessibilityTools(textToSpeech=user_data["speech"], simplifiedLanguage=user_data["language"], enhancedVisualization=user_data["visuals"])
-toneOfVoice = toneOfVoice(formality=user_data["formality"], positivity=user_data["positivity"], humor=user_data["humor"])
-# 3. build userCard
+# parse Tools data
+accessibilityTools = accessibilityTools(textToSpeech=user_data["speech"],
+                                        simplifiedLanguage=user_data["language"],
+                                        enhancedVisualization=user_data["visuals"])
+# pase Tone-of-Voice data
+toneOfVoice = toneOfVoice(formality=user_data["formality"],
+                          positivity=user_data["positivity"],
+                          humor=user_data["humor"])
+# form userCard
 userCard = userCard(age, interests, accessibilityTools, toneOfVoice).build()
 
-# set other variables
-log = 'sample log placeholder'
-currentPromptTokens = 'prompt'
-generatedResult = 'LLM result'
-extractedInfo = 'RAG result'
-guardrail = 'guardrail.xml'
+generatedResult = ""
+extractedInfo = ""
+log = ""
+
+# define guardrail
+with open('guardrail.xml') as f:
+    guardrail = xmltodict.parse(f.read())
 
 # create a block
-sample_block = Block(Data(userCard, log, currentPromptTokens, generatedResult,extractedInfo, guardrail).build())
-sample_block_ = Block(Data(userCard, log, currentPromptTokens, generatedResult,extractedInfo, guardrail).build())
+sample_block = Block(Data(userCard, "What is inclusion?", guardrail).build())
+sample_block_ = Block(Data(userCard, "Should I learn sign language to study in an inclusive school?", guardrail).build())
+sample_block__ = Block(Data(userCard, "Should I learn foreign language to study in an inclusive school?", guardrail).build())
 
 # add a block
 blockchain.add_block(sample_block)
 blockchain.add_block(sample_block_)
+blockchain.add_block(sample_block__)
 
 for block in blockchain.chain:
     print('Block ID:', str(block.blockId))

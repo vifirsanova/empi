@@ -1,0 +1,11 @@
+<guardrails>
+    <prompt_injection>
+        <type>input_sanitization</type>
+        <type>input_validation</type>
+    </prompt_injection>
+    <ai_hallucinations>
+        <type>output_monitoring</type>
+        <type>consistency_check</type>
+        <type>feedback_loop</type>
+    </ai_hallucinations>
+</guardrails>

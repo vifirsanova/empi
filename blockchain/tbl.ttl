@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ns1="http://example.org/inclusive_education#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#WheelchairRamps">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#AccessibilityMeasure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#AssistiveTechnology">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#AccessibilityMeasure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#InclusiveEducationPolicy">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#Policy"/>
+    <ns1:promotes rdf:resource="http://example.org/inclusive_education#CollaborativeLearning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#BrailleMaterials">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#AccessibilityMeasure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#EqualAccessPolicy">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#Policy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#University">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#EducationalInstitution"/>
+    <ns1:offers rdf:resource="http://example.org/inclusive_education#CounselingServices"/>
+    <ns1:follows rdf:resource="http://example.org/inclusive_education#UDL"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#ADHD">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#SupportGroups">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#PsychologicalSupport"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#IEP">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#EducationalPractice"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#NonProfit">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#EducationalInstitution"/>
+    <ns1:implements rdf:resource="http://example.org/inclusive_education#InclusiveEducationPolicy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#CounselingServices">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#PsychologicalSupport"/>
+    <ns1:addresses rdf:resource="http://example.org/inclusive_education#ASD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#School">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#EducationalInstitution"/>
+    <ns1:provides rdf:resource="http://example.org/inclusive_education#WheelchairRamps"/>
+    <ns1:supports rdf:resource="http://example.org/inclusive_education#ADHD"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#CollaborativeLearning">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#EducationalPractice"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#VisualImpairment">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#DisabilityRightsAct">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#Policy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#Therapists">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#PsychologicalSupport"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#UDL">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#EducationalPractice"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/inclusive_education#ASD">
+    <rdf:type rdf:resource="http://example.org/inclusive_education#Disability"/>
+  </rdf:Description>
+</rdf:RDF>
