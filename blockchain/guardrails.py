@@ -1,15 +1,26 @@
-from langchain_community.document_loaders import JSONLoader
+import json
 
-"""RULE 1: TONE"""
+with open('aggressive.json') as f:
+  data = json.load(f)
 
-def load_words(keyword):
-  return JSONLoader(file_path='aggressive.json', jq_schema=f'.{keyword}[]').load()
+# Parse the JSON and structure it into required string format
+parsed_strings = []
 
-aggressive_words, neutral_words = load_words('aggressive'), load_words('neutral')
+for rule, details in data["rules"].items():
+  aggressive_samples = details.get("aggressive", [])
+  neutral_samples = details.get("neutral", [])
 
-template = f"Помечать слова, использующиеся для выражения враждебности или агрессии.\n\
-Заменять агрессивные слова на нейтральные слова с эквивалентным значением. \n\
-Дан образец агрессивных слов: {[x.page_content for x in aggressive_words]}. \n\
-Дан образец нейтральных замен: {[x.page_content for x in neutral_words]}."
+  if isinstance(aggressive_samples, list) and isinstance(neutral_samples, list):
+    for aggressive, neutral in zip(aggressive_samples, neutral_samples):
+      parsed_strings.append(f"rule: {rule}; aggressive: {aggressive}; neutral: {neutral}")
 
-print(template)
+  # Special handling for sub-categories like "professional", "descriptive", "personal" under "connotation" and "implicature"
+  for subcategory, subdetails in details.items():
+    if isinstance(subdetails, dict):
+      aggressive_samples = subdetails.get("aggressive", [])
+      neutral_samples = subdetails.get("neutral", [])
+
+      for aggressive, neutral in zip(aggressive_samples, neutral_samples):
+        parsed_strings.append(f"rule: {rule} ({subcategory}); aggressive: {aggressive}; neutral: {neutral}")
+
+print(parsed_strings)
