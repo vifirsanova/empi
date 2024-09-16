@@ -1,5 +1,8 @@
 import json
 
+from langchain_community.llms.llamacpp import LlamaCpp
+from langchain.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
 def process_rule(rule_name, rule_data):
   """
@@ -26,6 +29,37 @@ def process_rule(rule_name, rule_data):
 with open('aggressive.json') as f:
   data = json.load(f)
 
+system_rule = str()
+
+i=1
+
 for rule_name, rule_data in data['rules'].items():
   rule_text, substitutions = process_rule(rule_name, rule_data)
-  print(rule_text, substitutions)
+  system_rule += f'ПРАВИЛО №{i}\n'
+  system_rule += f'{rule_text}\n'
+  system_rule += 'ОБРАЗЦЫ ЗАМЕН\n'
+  system_rule += f'{substitutions}\n\n'
+  i += 1
+
+def build_chain(system_rule):
+   """
+   Build and execute a Langchain-based chain to process the given data.
+   """
+
+   prompt_template = """{system_rule}
+   Дан образец <Всего лишь 10% участников.>
+   Определить, какое правило нарушено в текущем образце. Произвести необходимую замену согласно правилу.
+   """
+   prompt = PromptTemplate(template=prompt_template, input_variables=["system_rule"])
+   # load LLM
+   llm = LlamaCpp(
+     model_path="/home/missvector/Meta-Llama-3-8B-Instruct.Q4_K_M.gguf",
+     n_ctx=2048,  # context window
+   )
+   output_parser = StrOutputParser()
+   chain = prompt | llm | output_parser
+   print(chain)
+   response = chain.invoke({"system_rule": system_rule})
+   print(response)
+
+build_chain(system_rule)
