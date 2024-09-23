@@ -1,0 +1,165 @@
+{
+"Protocol": {
+"rules": {
+"tone": {
+"violations": [
+{
+"line": 1,
+"issue": "Враждебность",
+"details": {
+"lexical_item": "переполох",
+"position": {
+"start": 14,
+"end": 23
+}
+}
+},
+{
+"line": 3,
+"issue": "Агрессия",
+"details": {
+"lexical_item": "натворил",
+"position": {
+"start": 31,
+"end": 39
+}
+}
+}
+]
+},
+"lexicon": {
+"violations": [
+{
+"line": 5,
+"issue": "Негативный контекст",
+"details": {
+"lexical_item": "препятствия",
+"position": {
+"start": 36,
+"end": 47
+}
+}
+},
+{
+"line": 7,
+"issue": "Негативный контекст",
+"details": {
+"lexical_item": "драма",
+"position": {
+"start": 73,
+"end": 78
+}
+}
+}
+]
+},
+"emphasis": {
+"violations": [
+{
+"line": 9,
+"issue": "Усиление",
+"details": {
+"lexical_item": "всегда",
+"position": {
+"start": 11,
+"end": 17
+}
+}
+},
+{
+"line": 11,
+"issue": "Уменьшение",
+"details": {
+"lexical_item": "не то",
+"position": {
+"start": 36,
+"end": 41
+}
+}
+}
+]
+},
+"connotation": {
+"violations": [
+{
+"line": 11,
+"issue": "Отрицательная коннотация",
+"details": {
+"lexical_item": "не то",
+"position": {
+"start": 36,
+"end": 41
+}
+}
+}
+]
+},
+"implicature": {
+"violations": [
+{
+"issue": "Импликатура",
+"details": {
+"lexical_item": "гениальными",
+"position": {
+"start": 62,
+"end": 72
+}
+}
+}
+]
+}
+},
+"dialogueHistory": [
+{
+"timestamp": "time1",
+"speaker": "user",
+"message": "Ты слышала? Иван опять устроил переполох в офисе."
+},
+{
+"timestamp": "time2",
+"speaker": "system",
+"message": "Да что он на этот раз натворил?"
+},
+{
+"timestamp": "time3",
+"speaker": "user",
+"message": "Он пробрался в архив без разрешения. Искал какие-то старые документы по проекту."
+},
+{
+"timestamp": "time4",
+"speaker": "system",
+"message": "Ох, опять за своё. Он не давал развиваться проекту с самого начала. Всё время чинит препятствия."
+},
+{
+"timestamp": "time5",
+"speaker": "user",
+"message": "Точно. А помнишь, как на прошлой неделе Елена внесла лишь одно изменение в расписание, и он устроил из этого целую драму?"
+},
+{
+"timestamp": "time6",
+"speaker": "system",
+"message": "Да уж, она всегда делает не то, что нужно. Хотя в этот раз её предложение было вполне разумным."
+},
+{
+"timestamp": "time7",
+"speaker": "user",
+"message": "Согласна. А когда Иван пытался исправить ситуацию своими \"гениальными\" идеями, я чуть не рассмеялась ему в лицо."
+},
+{
+"timestamp": "time8",
+"speaker": "system",
+"message": "Ну да, твои предложения были \"неоценимы\", сказала я ему. Он даже не понял сарказма!"
+},
+{
+"timestamp": "time9",
+"speaker": "user",
+"message": "Боже, когда же в нашем офисе наступит спокойствие?"
+},
+{
+"timestamp": "time10",
+"speaker": "system",
+"message": "Боюсь, что не скоро, пока у нас работают такие персонажи."
+}
+]
+}
+}
