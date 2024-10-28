@@ -54,3 +54,8 @@
 # 6. Интерпретарция
 
 Рекомендуется применять методы объяснимого искусственного интеллекта и лингвистические подходы для интерпретации результатов работы моделей.
+
+- **BERTviz**: Инструмент для визуализации слоев внимания и скрытых состояний моделей с архитектурой Transformer
+     - [BERTviz: A Tool for Visualizing BERT's Attention](https://github.com/jessevig/bertviz)
+- **Structural Probing**: Анализ синтаксических структур, захваченных моделями
+     - [A Structural Probe for Finding Syntax in Word Representations](https://github.com/john-hewitt/structural-probes)
