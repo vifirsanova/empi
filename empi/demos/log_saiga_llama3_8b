@@ -1,0 +1,152 @@
+/home/missvector/llama.cpp/llama-cli -m /home/missvector/model-q4_K.gguf -p "Ты помощник преподавателя. Отвечай на вопрос пользователя вежливо. Структурируй ответы. ПОЛЬЗОВАТЕЛЬ: Я преподаватель в университете. В этом году среди моих студентов будет мальчик с аутизмом. Как мне выстраивать семинарские занятия?"
+Log start
+main: build = 3262 (38373cfb)
+main: built with cc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0 for x86_64-linux-gnu
+main: seed  = 1722852742
+llama_model_loader: loaded meta data with 23 key-value pairs and 291 tensors from /home/missvector/model-q4_K.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.name str              = saiga_llama3_8b
+llama_model_loader: - kv   2:                          llama.block_count u32              = 32
+llama_model_loader: - kv   3:                       llama.context_length u32              = 8192
+llama_model_loader: - kv   4:                     llama.embedding_length u32              = 4096
+llama_model_loader: - kv   5:                  llama.feed_forward_length u32              = 14336
+llama_model_loader: - kv   6:                 llama.attention.head_count u32              = 32
+llama_model_loader: - kv   7:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv   8:                       llama.rope.freq_base f32              = 500000,000000
+llama_model_loader: - kv   9:     llama.attention.layer_norm_rms_epsilon f32              = 0,000010
+llama_model_loader: - kv  10:                          general.file_type u32              = 15
+llama_model_loader: - kv  11:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  12:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  13:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  14:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  15:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  16:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  17:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  18:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  19:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  20:            tokenizer.ggml.padding_token_id u32              = 128000
+llama_model_loader: - kv  21:                    tokenizer.chat_template str              = {% set loop_messages = messages %}{% ...
+llama_model_loader: - kv  22:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type q4_K:  193 tensors
+llama_model_loader: - type q6_K:   33 tensors
+llm_load_vocab: special tokens cache size = 256
+llm_load_vocab: token to piece cache size = 0,8000 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 128256
+llm_load_print_meta: n_merges         = 280147
+llm_load_print_meta: n_ctx_train      = 8192
+llm_load_print_meta: n_embd           = 4096
+llm_load_print_meta: n_head           = 32
+llm_load_print_meta: n_head_kv        = 8
+llm_load_print_meta: n_layer          = 32
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_embd_head_k    = 128
+llm_load_print_meta: n_embd_head_v    = 128
+llm_load_print_meta: n_gqa            = 4
+llm_load_print_meta: n_embd_k_gqa     = 1024
+llm_load_print_meta: n_embd_v_gqa     = 1024
+llm_load_print_meta: f_norm_eps       = 0,0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1,0e-05
+llm_load_print_meta: f_clamp_kqv      = 0,0e+00
+llm_load_print_meta: f_max_alibi_bias = 0,0e+00
+llm_load_print_meta: f_logit_scale    = 0,0e+00
+llm_load_print_meta: n_ff             = 14336
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 0
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 500000,0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 8192
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: model type       = 8B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 8,03 B
+llm_load_print_meta: model size       = 4,58 GiB (4,89 BPW) 
+llm_load_print_meta: general.name     = saiga_llama3_8b
+llm_load_print_meta: BOS token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: EOS token        = 128009 '<|eot_id|>'
+llm_load_print_meta: PAD token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: EOT token        = 128009 '<|eot_id|>'
+llm_load_print_meta: max token length = 256
+llm_load_tensors: ggml ctx size =    0,14 MiB
+llm_load_tensors:        CPU buffer size =  4685,30 MiB
+........................................................................................
+llama_new_context_with_model: n_ctx      = 8192
+llama_new_context_with_model: n_batch    = 2048
+llama_new_context_with_model: n_ubatch   = 512
+llama_new_context_with_model: flash_attn = 0
+llama_new_context_with_model: freq_base  = 500000,0
+llama_new_context_with_model: freq_scale = 1
+llama_kv_cache_init:        CPU KV buffer size =  1024,00 MiB
+llama_new_context_with_model: KV self size  = 1024,00 MiB, K (f16):  512,00 MiB, V (f16):  512,00 MiB
+llama_new_context_with_model:        CPU  output buffer size =     0,49 MiB
+llama_new_context_with_model:        CPU compute buffer size =   560,01 MiB
+llama_new_context_with_model: graph nodes  = 1030
+llama_new_context_with_model: graph splits = 1
+main: chat template example: <|start_header_id|>system<|end_header_id|>
+
+You are a helpful assistant<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Hello<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+Hi there<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+How are you?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+
+system_info: n_threads = 4 / 8 | AVX = 1 | AVX_VNNI = 0 | AVX2 = 1 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | AVX512_BF16 = 0 | FMA = 1 | NEON = 0 | SVE = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | MATMUL_INT8 = 0 | LLAMAFILE = 1 | 
+sampling: 
+	repeat_last_n = 64, repeat_penalty = 1,000, frequency_penalty = 0,000, presence_penalty = 0,000
+	top_k = 40, tfs_z = 1,000, top_p = 0,950, min_p = 0,050, typical_p = 1,000, temp = 0,800
+	mirostat = 0, mirostat_lr = 0,100, mirostat_ent = 5,000
+sampling order: 
+CFG -> Penalties -> top_k -> tfs_z -> typical_p -> top_p -> min_p -> temperature 
+generate: n_ctx = 8192, n_batch = 2048, n_predict = -1, n_keep = 1
+
+
+Ты помощник преподавателя. Отвечай на вопрос пользователя вежливо. Структурируй ответы. ПОЛЬЗОВАТЕЛЬ: Я преподаватель в университете. В этом году среди моих студентов будет мальчик с аутизмом. Как мне выстраивать семинарские занятия? 
+
+ОТВЕТ:
+Уважаемый преподаватель! Конечно, мы с радостью поможем вам в организации занятий для вашего студента с аутизмом. Вот несколько советов, как выстроить семинарские занятия в учете интересов и потребностей вашего ученика:
+
+1. **Адаптация материалов**: Размещайте материалы на доступных для студента уровнях сложности и форматах, включая визуальные и аудио материалы. 
+
+2. **Регулярность и предсказуемость**: Планируйте занятия заранее, чтобы обеспечить студенту уверенность в планировании своего времени. 
+
+3. **Учет потребностей в перерывах**: Позволять студенту делать перерывы и отступать от активных занятий, если это необходимо.
+
+4. **Социальная поддержка**: Общение с другими студентами может быть полезным, но важно также учитывать потребности вашего ученика в индивидуальном контакте или времени для работы в одиночку.
+
+5. **Сотрудничество с семьей**: Связь с семьей вашего студента может быть очень важна для того, чтобы лучше понять его потребности и предпочтения. 
+
+6. **Адаптация методов обучения**: Использовать индивидуальные методы обучения, которые лучше подходят вашему студенту.
+
+7. **Доступность ресурсов**: Если возможно, используйте специализированные ресурсы, такие как специалисты по обучению детей с аутизмом или специализированные организации.
+
+8. **Эмоциональное понимание**: Важно проявлять понимание и терпимость, особенно если студент испытывает стресс или эмоциональный кризис.
+
+9. **Оценка успеха**: Оценивайте успех студента не только по результатам, но и по его самочувствию и активности в процессе обучения.
+
+10. **Обучение для вас**: Не забывайте о собственном обучении и поддержке. Обучение детей с аутизмом требует времени, энергии и терпения, так что не стесняйтесь обращаться за помощью в случае необходимости.
+
+Надеемся, что эти рекомендации помогут вам создать благоприятные условия для обучения вашего студента. Если возникнут дополнительные вопросы, не стесняйтесь обращаться. Удачи в преподавательской работе!  [end of text]
+
+llama_print_timings:        load time =   15084,50 ms
+llama_print_timings:      sample time =     683,90 ms /   557 runs   (    1,23 ms per token,   814,45 tokens per second)
+llama_print_timings: prompt eval time =   23078,35 ms /    73 tokens (  316,14 ms per token,     3,16 tokens per second)
+llama_print_timings:        eval time = 2000417,00 ms /   556 runs   ( 3597,87 ms per token,     0,28 tokens per second)
+llama_print_timings:       total time = 2026263,69 ms /   629 tokens
+Log end

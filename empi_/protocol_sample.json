@@ -1,0 +1,143 @@
+{
+  "Protocol": {
+    "rules": {
+      "tone": {
+        "violations": [
+          {
+            "line": 2,
+            "issue": "negative tone",
+            "details": {
+              "lexical_item": "Ты не понимаешь ничего в этом деле, зачем ты вообще берешься за это?",
+              "position": {
+                "start": 0,
+                "end": 66
+              }
+            }
+          }
+        ]
+      },
+      "lexicon": {
+        "violations": [
+          {
+            "line": 1,
+            "issue": "negative lexicon",
+            "details": {
+              "lexical_item": "Что за черт?!",
+              "position": {
+                "start": 0,
+                "end": 12
+              }
+            }
+          },
+          {
+            "line": 2,
+            "issue": "negative lexicon",
+            "details": {
+              "lexical_item": "не понимаешь ничего",
+              "position": {
+                "start": 4,
+                "end": 23
+              }
+            }
+          },
+          {
+            "line": 2,
+            "issue": "negative lexicon",
+            "details": {
+              "lexical_item": "зачем ты вообще берешься за это?",
+              "position": {
+                "start": 27,
+                "end": 66
+              }
+            }
+          },
+          {
+            "line": 3,
+            "issue": "negative lexicon",
+            "details": {
+              "lexical_item": "иди к черту!",
+              "position": {
+                "start": 19,
+                "end": 31
+              }
+            }
+          }
+        ]
+      },
+      "emphasis": {
+        "violations": [
+          {
+            "issue": "none"
+          }
+        ]
+      },
+      "connotation": {
+        "violations": [
+          {
+            "line": 1,
+            "issue": "negative connotation",
+            "details": {
+              "lexical_item": "Что за черт?!",
+              "position": {
+                "start": 0,
+                "end": 12
+              }
+            }
+          },
+          {
+            "line": 2,
+            "issue": "negative connotation",
+            "details": {
+              "lexical_item": "не понимаешь ничего",
+              "position": {
+                "start": 4,
+                "end": 23
+              }
+            }
+          },
+          {
+            "line": 2,
+            "issue": "negative connotation",
+            "details": {
+              "lexical_item": "зачем ты вообще берешься за это?",
+              "position": {
+                "start": 27,
+                "end": 66
+              }
+            }
+          },
+          {
+            "line": 3,
+            "issue": "negative connotation",
+            "details": {
+              "lexical_item": "иди к черту!",
+              "position": {
+                "start": 19,
+                "end": 31
+              }
+            }
+          }
+        ]
+      },
+      "implicature": {
+        "violations": [
+          {
+            "issue": "none"
+          }
+        ]
+      }
+    },
+    "dialogueHistory": [
+      {
+        "timestamp": "2024-09-09T10:00:00Z",
+        "speaker": "user",
+        "message": "Ты опять сделал всё неправильно!"
+      },
+      {
+        "timestamp": "2024-09-09T10:01:00Z",
+        "speaker": "assistant",
+        "message": "Ты не понимаешь ничего в этом деле, зачем ты вообще берешься за это?"
+      }
+    ]
+  }
+}
